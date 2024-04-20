@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {UrlService} from "../url.service";
 
 @Component({
   selector: 'app-listar-component',
@@ -6,10 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./listar-component.component.css']
 })
 export class ListarComponentComponent {
-  // Exemplo de lista de itens
-  itens: any[] = [
-    { id: 1, nome: 'Item 1' },
-    { id: 2, nome: 'Item 2' },
-    { id: 3, nome: 'Item 3' }
-  ];
+  urls: any[] | undefined;
+
+  constructor(private urlService: UrlService) { }
+
+  ngOnInit(): void {
+    this.urlService.getUrls().subscribe(data => {
+      this.urls = data;
+    });
+  }
 }

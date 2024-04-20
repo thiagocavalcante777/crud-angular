@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {HttpClientModule} from "@angular/common/http";
 
 import {RouterModule} from "@angular/router";
 import { AppComponent } from './app.component';
@@ -9,6 +10,7 @@ import { EditarComponentComponent } from './editar-component/editar-component.co
 import {AppRoutes} from "./app.routes";
 import { XyzComponent } from './xyz/xyz.component';
 import {FormsModule} from "@angular/forms";
+import {UrlService} from "./url.service";
 
 @NgModule({
   declarations: [
@@ -21,9 +23,10 @@ import {FormsModule} from "@angular/forms";
   imports: [
     BrowserModule,
     RouterModule.forRoot(AppRoutes),
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [UrlService],
   bootstrap: [AppComponent]
 })
 
